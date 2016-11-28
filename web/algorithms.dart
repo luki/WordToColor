@@ -15,10 +15,9 @@ List<String> checkLength(List<String> input) {
   var tempOutput = new List<String>.from(input);
   var difference = (tempOutput.length/6).round() + 1;
   while (tempOutput.length > 6) {
-    var index = 0;
-    for (index; index < tempOutput.length - 1; index = index + difference) {
-        print("Removing $tempOutput[index] at index $index");
-        tempOutput.removeAt(index);
+    for (int i = 0; i < tempOutput.length - 1; i += difference) {
+        print("Removing $tempOutput[i] at index $i");
+        tempOutput.removeAt(i);
       }
   }
   return tempOutput;

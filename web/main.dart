@@ -10,12 +10,10 @@ SpanElement resultSelector = querySelector("#result");
 
 
 void main() {
-  querySelector("#colorArea").onClick.listen(copyColor);
   setup();
 }
 
 // MARK: Setup
-
 void setup() {
   setupListeners();
 }
@@ -25,13 +23,8 @@ void setupListeners() {
 }
 
 // MARK: Listener Functions
-
 void typeEvent(Event event) {
   var color = "#${combine(wordFieldSelector.value)}";
   resultSelector.text = color;
   wrapperSelector.style.backgroundColor = color;
-}
-
-void copyColor(MouseEvent event) {
-  print("Copy");
 }
