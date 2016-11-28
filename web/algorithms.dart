@@ -16,7 +16,7 @@ List<String> checkLength(List<String> input) {
   var difference = (tempOutput.length/6).round() + 1;
   while (tempOutput.length > 6) {
     for (int i = 0; i < tempOutput.length - 1; i += difference) {
-        print("Removing $tempOutput[i] at index $i");
+        // print("Removing $tempOutput[i] at index $i");
         tempOutput.removeAt(i);
       }
   }
