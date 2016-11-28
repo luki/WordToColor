@@ -1,3 +1,29 @@
+String combine(String input) => checkLength(arrayToSingularElements(toColorBlockArray(input))).join('');
+
+List<String> toColorBlockArray(String input) {
+  List<String> letterBlock = input.split('');
+  var colorBlock = [];
+  for (int i = 0; i < letterBlock.length -1; i++) {
+    colorBlock.add(translateChar(letterBlock[i]));
+  }
+  return colorBlock;
+}
+
+List<String> arrayToSingularElements(List<String> input) => input.join('').split('');
+
+List<String> checkLength(List<String> input) {
+  var tempOutput = new List<String>.from(input);
+  var difference = (tempOutput.length/6).round() + 1;
+  while (tempOutput.length > 6) {
+    var index = 0;
+    for (index; index < tempOutput.length - 1; index = index + difference) {
+        print("Removing $tempOutput[index] at index $index");
+        tempOutput.removeAt(index);
+      }
+  }
+  return tempOutput;
+}
+
 String translateChar(String input) {
   switch(input.toUpperCase()) {
       case "A":
@@ -55,31 +81,4 @@ String translateChar(String input) {
       default:
         return "";
   }
-}
-
-List<String>checkLength(List<String> input) {
-
-  var tempChain = input.join('').split('');
-  List<String> newChain = [];
-  for (int i = 0; i < tempChain.length; i++) {
-    newChain.add(tempChain[i]);
-  }
-  if (newChain.length > 6) {
-    var tempWordChain = newChain;
-    while(tempWordChain.length > 6) {
-      tempWordChain.removeLast();
-    }
-    return tempWordChain;
-  } else {
-    return newChain;
-  }
-}
-
-String translateWord(String input) {
-  var tempWordChain = input.split('');
-  var newWordChain = new List<String>();
-  for (int i = 0; i < input.length; i++) {
-    newWordChain.add(translateChar(tempWordChain[i]));
-  }
-  return checkLength(newWordChain).join('');
 }

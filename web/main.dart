@@ -2,7 +2,7 @@
 // is governed by a BSD-style license that can be found in the LICENSE file.
 
 import 'dart:html';
-import 'src/algorithm.dart';
+import 'algorithms.dart';
 
 InputElement wordFieldSelector = querySelector("#word_field");
 DivElement wrapperSelector = querySelector("#wrapper");
@@ -10,6 +10,7 @@ SpanElement resultSelector = querySelector("#result");
 
 
 void main() {
+  querySelector("#colorArea").onClick.listen(copyColor);
   setup();
 }
 
@@ -26,7 +27,11 @@ void setupListeners() {
 // MARK: Listener Functions
 
 void typeEvent(Event event) {
-  var color = "#${translateWord(wordFieldSelector.value)}";
+  var color = "#${combine(wordFieldSelector.value)}";
   resultSelector.text = color;
   wrapperSelector.style.backgroundColor = color;
+}
+
+void copyColor(MouseEvent event) {
+  print("Copy");
 }
